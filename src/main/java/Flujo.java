@@ -1,19 +1,29 @@
 public class Flujo {
     public static void main(String[] args) {
         System.out.println("Inicio del main");
-        metodo1();
+        try {
+            metodo1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("Fin del main");
     }
 
-    private static void metodo1() {
+    private static void metodo1() throws MiException {
         System.out.println("Inicio del metodo1");
-        metodo2();
+        try {
+            metodo2();
+        } catch (MiException me) {
+            me.printStackTrace();
+        }
+
         System.out.println("Fin del metodo1");
     }
 
-    private static void metodo2() {
+    private static void metodo2() throws MiException {
         System.out.println("Inicio del metodo2");
-        for (int i = 1; i <= 5; i++) {
+
+        /*for (int i = 1; i <= 5; i++) {
             System.out.println(i);
 
             try {
@@ -30,7 +40,15 @@ public class Flujo {
                 System.out.println(exception.getMessage());
                 exception.printStackTrace();
             }
-        }
-        System.out.println("Fin del metodo2");
+        }*/
+
+        /*ArithmeticException ae = new ArithmeticException();
+        throw ae; */
+
+        throw new MiException("Mi excepción fue lanzada");
+
+        // Ejemplo de StackOverflowError (un método que se llama
+        // a sí mismo hasta el infinito)
+        // metodo2();
     }
 }
